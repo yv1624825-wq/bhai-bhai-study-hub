@@ -1,135 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhai-Bhai Study Hub</title>
+    <title>Bhai-Bhai Study Hub | Topper's Choice</title>
     <style>
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: #f4f7f6; color: #333; }
-        header { background: #1a2a6c; color: white; padding: 25px; text-align: center; }
-        .logo { width: 110px; border-radius: 50%; border: 3px solid #f7b733; margin-bottom: 10px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f0f2f5; color: #333; text-align: center; }
         
-        /* Breaking News Style */
-        .news-bar { background: #f7b733; color: #1a2a6c; padding: 10px; font-weight: bold; border-bottom: 2px solid #1a2a6c; }
+        /* Header & Logo */
+        header { background: #1a2a6c; color: white; padding: 40px 20px; border-bottom: 5px solid #f7b733; }
+        .logo { width: 120px; border-radius: 50%; border: 4px solid #f7b733; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         
-        .subject-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 20px; }
-        .card { background: white; width: 280px; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+        /* News Ticker */
+        .news-bar { background: #f7b733; color: #1a2a6c; padding: 10px; font-weight: bold; font-size: 16px; }
+
+        /* Subject Section */
+        .container { padding: 40px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .card { background: white; width: 300px; padding: 25px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s; border-top: 8px solid #1a2a6c; }
         .card:hover { transform: translateY(-10px); }
+        .card h3 { margin: 15px 0; color: #1a2a6c; }
         
-        .btn { background: #b21f1f; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; margin-top: 15px; }
-        
-        /* Contact Form */
-        .contact-section { background: #fff; padding: 40px 20px; text-align: center; margin: 20px auto; max-width: 600px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        input, textarea { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-        .submit-btn { background: #1a2a6c; color: white; padding: 10px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn { background: #b21f1f; color: white; padding: 12px 25px; text-decoration: none; border-radius: 30px; display: inline-block; font-weight: bold; margin-top: 10px; transition: 0.2s; }
+        .btn:hover { background: #ff4b2b; }
 
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
-    </style>
-</head>
-<body>
-
-<header>
-    <img src="3708.png" alt="Bhai-Bhai Logo" class="logo">
-    <h1>Bhai-Bhai Study Hub</h1>
-    <p>Har baccha banega topper! 🏆</p>
-</header>
-
-<div class="news-bar">
-    <marquee>📢 UP or CBSC Board Exams 2026 ke liye Science ke naye visual notes upload kar diye gaye hain! | Maths ke formulas check karein! | WhatsApp group join karein updates ke liye! 📢</marquee>
-</div>
-
-<div class="subject-container">
-    <div class="card">
-        <div style="font-size: 50px;">🧬</div>
-        <h3>Science Notes</h3>
-        <p>yashu vermaVisuals</p>
-        <a href="Science_Visual_Notes_Kirad_Style.pdf" class="btn">Download PDF</a>
-    </div>
-<div id="ai-study-zone" style="max-width: 800px; margin: 30px auto; padding: 20px; background: #fff; border-radius: 20px; border: 4px solid #1a2a6c; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-    
-    <div style="background: #f7b733; padding: 15px; border-radius: 15px; margin-bottom: 25px;">
-        <h2 id="ai-week-title" style="color: #1a2a6c; margin: 0;">⏳ AI Weekly Top Questions</h2>
-        <div id="ai-questions-list" style="text-align: left; font-size: 17px; font-weight: bold; padding: 10px;">
-            </div>
-    </div>
-
-    <hr style="border: 1px solid #eee; margin: 20px 0;">
-
-    <div style="padding: 10px;">
-        <h2 style="color: #b21f1f;">🤖 Ask Bhai AI (Doubt Solver)</h2>
-        <p>Koi sawal samajh nahi aa raha? Yahan type karein:</p>
-        <input type="text" id="user-question" placeholder="E.g. What is Photosynthesis?" style="width: 80%; padding: 12px; border: 2px solid #ccc; border-radius: 10px; font-size: 16px;">
-        <button onclick="solveProblem()" style="background: #1a2a6c; color: white; padding: 12px 25px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; margin-top: 10px;">Solve Now 🚀</button>
-        
-        <div id="ai-answer-box" style="margin-top: 20px; padding: 15px; background: #e8f8f5; border-radius: 10px; display: none; text-align: left; border-left: 5px solid #27ae60;">
-            <b style="color: #27ae60;">Bhai AI says:</b>
-            <p id="ai-response-text" style="font-size: 16px; color: #333;"></p>
-        </div>
-    </div>
-</div>
-
-<script>
-    // 1. Weekly Update Logic
-    function loadWeeklyContent() {
-        const date = new Date();
-        const day = date.getDate();
-        const qList = document.getElementById('ai-questions-list');
-        const qTitle = document.getElementById('ai-week-title');
-
-        if (day <= 10) {
-            qTitle.innerText = "🔥 Week 1: Chemistry Dhamaka";
-            qList.innerHTML = "• Balance: Fe + H2O → Fe3O4 + H2<br>• What is Rancidity?<br>• Define Displacement Reaction.";
-        } else if (day <= 20) {
-            qTitle.innerText = "🔥 Week 2: Biology Masterclass";
-            qList.innerHTML = "• Role of Villi in Small Intestine?<br>• What is Aerobic Respiration?<br>• Define Photosynthesis.";
-        } else {
-            qTitle.innerText = "🔥 Week 3: Physics & Maths";
-            qList.innerHTML = "• Define Power of Lens.<br>• Mirror Formula check karein.<br>• HCF/LCM trick sawal.";
-        }
-    }
-
-    // 2. Simple AI Solver Logic
-    function solveProblem() {
-        const input = document.getElementById('user-question').value.toLowerCase();
-        const responseBox = document.getElementById('ai-answer-box');
-        const responseText = document.getElementById('ai-response-text');
-        
-        responseBox.style.display = "block";
-        
-        if(input.includes("photosynthesis")) {
-            responseText.innerText = "Photosynthesis wo process hai jisme plants suraj ki roshni (sunlight) ka use karke CO2 aur Pani se apna khana banate hain. Green Leaves iske liye zaroori hain!";
-        } else if(input.includes("corrosion") || input.includes("rusting")) {
-            responseText.innerText = "Jab loha (Iron) nami aur hawa ke contact mein aata hai, toh us par bhure rang ki layer jam jati hai, ise hi Corrosion/Rusting kehte hain.";
-        } else if(input.includes("hcf")) {
-            responseText.innerText = "HCF ka matlab hai Highest Common Factor. Wo sabse bada number jo do numbers ko poora divide kar de.";
-        } else {
-            responseText.innerText = "Bhai, ye sawal mast hai! Iska detail answer hamari 'Science Master PDF' mein page 4 par dekho. Ya phir apne teacher se ek baar confirm karo!";
-        }
-    }
-
-    window.onload = loadWeeklyContent;
-</script>
-    
-    <div class="card">
-        <div style="font-size: 50px;">🌿</div>
-        <h3>Biology Master</h3>
-        <p>Life Processes in Detail</p>
-        <a href="Biology_Life_Processes_Kirad_Style.pdf" class="btn" style="background: #27ae60;">Download PDF</a>
-    </div>
-</div>
-
-<div class="contact-section">
-    <h2>Koi Sawal Hai? 🙋‍♂️</h2>
-    <p>Apna doubt likhein, hum aapki madad karenge!</p>
-    <form action="mailto:teraemail@example.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Aapka Naam" required><br>
-        <textarea name="message" rows="4" placeholder="Aapka Sawal" required></textarea><br>
-        <button type="submit" class="submit-btn">Send Message</button>
-    </form>
-</div>
-
-<a href="https://wa.me/9199XXXXXXXX" class="whatsapp-float" target="_blank">💬 Join Group</a>
-
-</body>
-</html>
+        /* AI Solver Section */
+        .ai-box { max-width: 600px; margin: 40px auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 2px solid #1a2a6c; }
+        .ai-header { background: #1a2a6c; color: white; padding: 15px; font-weight: bold; font-size: 18px; }
+        #chat-window { height: 250px; overflow-y: auto; padding: 15px; background: #f9f9f9; display: flex; flex-direction: column; gap: 1
 
