@@ -7,13 +7,13 @@
     <style>
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f0f4f8; color: #333; }
         header { background: #1a2a6c; color: white; padding: 30px; text-align: center; border-bottom: 5px solid #f7b733; }
-        .logo { width: 90px; border-radius: 50%; border: 3px solid #fff; }
+        .logo { width: 90px; border-radius: 50%; border: 3px solid #fff; margin-bottom: 10px; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
         
         /* Chat Box Design */
         .ai-card { background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; border: 2px solid #1a2a6c; }
         .ai-title { background: #1a2a6c; color: white; padding: 15px; font-weight: bold; font-size: 18px; }
-        #chat-box { height: 400px; overflow-y: auto; padding: 20px; background: #fdfdfd; display: flex; flex-direction: column; gap: 10px; }
+        #chat-box { height: 400px; overflow-y: auto; padding: 20px; background: #fdfdfd; display: flex; flex-direction: column; gap: 10px; text-align: left; }
         .msg { padding: 12px 18px; border-radius: 15px; font-size: 15px; line-height: 1.5; max-width: 80%; }
         .ai { background: #e8efff; color: #1a2a6c; align-self: flex-start; border-bottom-left-radius: 2px; }
         .user { background: #1a2a6c; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
@@ -21,6 +21,10 @@
         .input-bar { display: flex; padding: 15px; background: #fff; border-top: 1px solid #ddd; }
         input { flex: 1; padding: 12px; border: 2px solid #eee; border-radius: 30px; outline: none; }
         button { background: #1a2a6c; color: white; border: none; padding: 10px 25px; border-radius: 30px; margin-left: 10px; cursor: pointer; font-weight: bold; }
+
+        .subject-grid { display: flex; gap: 15px; justify-content: center; margin-bottom: 25px; }
+        .s-card { background: white; padding: 15px; border-radius: 15px; width: 150px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 5px solid #b21f1f; }
+        .s-card a { text-decoration: none; color: #b21f1f; font-weight: bold; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -28,17 +32,22 @@
 <header>
     <img src="3708.png" alt="Logo" class="logo">
     <h1>Bhai-Bhai Study Hub</h1>
-    <p>Puchiye koi bhi sawal, AI dega turant jawab! 🤖</p>
+    <p>Har sawal ka turant jawab! 🤖</p>
 </header>
 
 <div class="container">
+    <div class="subject-grid">
+        <div class="s-card"><a href="Science_Visual_Notes_Kirad_Style.pdf">Science PDF</a></div>
+        <div class="s-card" style="border-top-color: #27ae60;"><a href="Biology_Life_Processes_Kirad_Style.pdf" style="color: #27ae60;">Biology PDF</a></div>
+    </div>
+
     <div class="ai-card">
-        <div class="ai-title">🧠 Smart Doubt Solver (Maths, Science, GK)</div>
+        <div class="ai-title">🧠 Smart AI Solver (Maths, Science, GK)</div>
         <div id="chat-box">
-            <div class="msg ai">Ram-Ram Bhai! Main taiyar hoon aapke sawalon ke liye. Science, Maths ya GK ka kuch bhi puchiye! 🚀</div>
+            <div class="msg ai">Ram-Ram Bhai! Main taiyar hoon. Science, Maths, GK ya Computer ka kuch bhi puchiye! 🚀</div>
         </div>
         <div class="input-bar">
-            <input type="text" id="user-in" placeholder="E.g. Newton's first law, HCF, India PM..." onkeypress="if(event.key==='Enter') startSolve()">
+            <input type="text" id="user-in" placeholder="E.g. Newton's law, HCF, Photosynthesis..." onkeypress="if(event.key==='Enter') startSolve()">
             <button onclick="startSolve()">Pucho</button>
         </div>
     </div>
@@ -47,55 +56,60 @@
 <script>
 const brain = {
     // SCIENCE
-    "acid": "Acid wo substance hai jo swad mein khatta hota hai aur Blue Litmus ko Red kar deta hai. Example: HCl.",
-    "base": "Base swad mein kadwa hota hai aur Red Litmus ko Blue kar deta hai. Example: NaOH.",
-    "newton first law": "Newton ka pehla niyam: Koi object tab tak rest mein rahega jab tak us par koi bahri force na lage. Ise Law of Inertia bhi kehte hain.",
-    "gravity": "Gravity wo force hai jisse prithvi har cheez ko apni taraf khinchti hai. Iski value 9.8 m/s² hoti hai.",
-    "cell": "Cell life ki sabse chhoti unit hai. Ise 'Building Block of Life' kehte hain.",
-    "mitochondria": "Mitochondria ko 'Powerhouse of the Cell' kaha jata hai kyunki ye energy banata hai.",
-    "ph value": "pH scale 0 se 14 tak hota hai. 7 neutral hai, 7 se kam Acid aur 7 se zyada Base hota hai.",
-    "atom": "Atom matter ka sabse chhota hissa hai jo Protons, Neutrons aur Electrons se bana hota hai.",
-    
+    "acid": "Acid swad mein khatta hota hai aur Blue Litmus ko Red kar deta hai. HCl iska example hai.",
+    "base": "Base swad mein kadwa hota hai aur Red Litmus ko Blue kar deta hai. NaOH iska example hai.",
+    "newton": "Newton ka 1st law: Inertia. 2nd law: F=ma. 3rd law: Action-Reaction.",
+    "gravity": "Gravity wo force hai jo cheezon ko zameen ki taraf khinchti hai (g = 9.8 m/s²).",
+    "cell": "Cell body ki sabse chhoti unit hai. Robert Hooke ne ise khoja tha.",
+    "mitochondria": "Ise 'Powerhouse of the cell' kehte hain kyunki ye energy banata hai.",
+    "ph": "pH 7 neutral hai. 7 se niche Acid, 7 se upar Base.",
+    "atom": "Matter ka sabse chhota part jo Proton, Neutron aur Electron se bana hai.",
+    "photosynthesis": "Plants suraj ki roshni mein apna khana banate hain aur Oxygen chhodte hain.",
+    "reflection": "Jab light kisi surface se takra kar wapas lautti hai.",
+    "refraction": "Jab light ek medium se dusre medium mein jati hai aur mud jati hai.",
+    "ohm": "Ohm's Law: V = I × R.",
+
     // MATHS
-    "hcf": "HCF (Highest Common Factor) wo sabse bada number hai jo di gayi sankhyao ko poora divide kar de.",
-    "lcm": "LCM (Least Common Multiple) wo sabse chhoti sankhya hai jo di gayi sankhyao ke table mein aati hai.",
-    "pythagoras": "Right-angled triangle mein: Hypotenuse² = Base² + Perpendicular². (a² + b² = c²)",
-    "pi value": "Pi (π) ki value lagbhag 3.14 ya 22/7 hoti hai.",
-    "area of circle": "Circle ka area formula: πr² hota hai.",
-    "trigonometry": "Ye triangle ke sides aur angles ke rishte ki study hai (Sin, Cos, Tan).",
-    "prime number": "Wo numbers jo sirf 1 aur apne aap se divide hote hain, jaise 2, 3, 5, 7, 11.",
+    "hcf": "HCF (Highest Common Factor) wo bada number jo dono digits ko divide karde.",
+    "lcm": "LCM wo sabse chhota number jo dono ke table mein aaye.",
+    "pytha": "Pythagoras Theorem: a² + b² = c² (Right angle triangle ke liye).",
+    "pi": "Pi (π) ki value 3.14 ya 22/7 hoti hai.",
+    "circle": "Circle Area = πr², Circumference = 2πr.",
+    "prime": "Wo numbers jo sirf 1 aur khud se divide ho (2, 3, 5, 7, 11).",
+    "even": "Jo numbers 2 se divide ho jayein (2, 4, 6, 8).",
+    "odd": "Jo numbers 2 se divide na ho (1, 3, 5, 7).",
 
     // GK
-    "capital of india": "Bharat ki rajdhani New Delhi hai.",
-    "prime minister of india": "Bharat ke vartaman Prime Minister Shri Narendra Modi ji hain.",
-    "president of india": "Bharat ki vartaman President Smt. Droupadi Murmu ji hain.",
-    "largest state": "Area ke hisab se Bharat ka sabse bada rajya Rajasthan hai.",
-    "national bird": "Bharat ka rashtriya pakshi Peacock (Mor) hai.",
-    "national animal": "Bharat ka rashtriya pashu Tiger (Baagh) hai.",
-    "independence day": "Bharat 15 August 1947 ko azad hua tha.",
-    "constitution": "Bharat ka sanvidhan 26 January 1950 ko lagu hua tha.",
-    "father of nation": "Mahatma Gandhi ko Bharat ka Rashtrapita kaha jata hai.",
+    "capital": "Bharat ki rajdhani New Delhi hai.",
+    "pm": "Bharat ke Prime Minister Shri Narendra Modi ji hain.",
+    "president": "Bharat ki President Smt. Droupadi Murmu ji hain.",
+    "largest state": "Area mein Rajasthan aur Population mein UP sabse bada hai.",
+    "national bird": "Peacock (Mor) hamara rashtriya pakshi hai.",
+    "national animal": "Tiger hamara rashtriya pashu hai.",
+    "azadi": "Bharat 15 August 1947 ko azad hua tha.",
+    "gandhi": "Mahatma Gandhi ko Rashtrapita (Father of Nation) kehte hain.",
+    "up": "Uttar Pradesh ki rajdhani Lucknow hai aur CM Yogi Adityanath ji hain.",
 
-    // WEB & GENERAL
-    "html": "HTML ka full form HyperText Markup Language hai. Ye website ka structure banati hai.",
-    "css": "CSS ka full form Cascading Style Sheets hai. Ye website ko design aur sundar banati hai.",
-    "javascript": "JS website mein dimaag aur logic dalne ke kaam aati hai."
+    // WEB & COMPUTER
+    "html": "HyperText Markup Language - Website ka dhancha banane ke liye.",
+    "css": "Cascading Style Sheets - Website ko design karne ke liye.",
+    "js": "JavaScript - Website mein dimaag aur buttons chalane ke liye.",
+    "cpu": "Central Processing Unit - Computer ka dimaag.",
+    "ram": "Random Access Memory - Temporary memory."
 };
 
 function startSolve() {
     const input = document.getElementById('user-in');
     const box = document.getElementById('chat-box');
     const text = input.value.trim().toLowerCase();
-    
     if(!text) return;
 
     box.innerHTML += `<div class="msg user">${input.value}</div>`;
     input.value = "";
     box.scrollTop = box.scrollHeight;
 
-    let ans = "Bhai, ye sawal mast hai! Maine ise note kar liya hai. Filhaal iska deep answer hamari 'Science Master PDF' mein check karo. Main roz naye jawab seekh raha hoon!";
+    let ans = "Bhai, ye sawal mast hai! Maine ise note kar liya hai. Filhaal iska answer hamari PDF mein check karo ya teacher se pucho. Main seekh raha hoon!";
 
-    // AI Logic: Check if keyword exists in brain
     for (let key in brain) {
         if (text.includes(key)) {
             ans = brain[key];
@@ -109,6 +123,5 @@ function startSolve() {
     }, 500);
 }
 </script>
-
 </body>
 </html>
